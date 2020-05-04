@@ -69,7 +69,7 @@ def main
   unless login_to_switch(options[:switch], options[:user], options[:password])
     exit(1)
   end
-  ports = get_switch_ports_stat(options[:switch], (0...8))
+  ports = get_switch_ports_stat(options[:switch], (1..8))
   result_hash = {
     "timestamp" => timestamp,
     "ports" => ports,
