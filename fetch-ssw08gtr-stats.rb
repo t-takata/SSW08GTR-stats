@@ -65,12 +65,13 @@ def main
   opt.on('-p PASSWORD') {|v| options[:password] = v }
   opt.parse!(ARGV)
 
+  timestamp = Time.now.to_i
   unless login_to_switch(options[:switch], options[:user], options[:password])
     exit(1)
   end
   ports = get_switch_ports_stat(options[:switch], (0...8))
   result_hash = {
-    "timestamp" => Time.now.to_i,
+    "timestamp" => timestamp,
     "ports" => ports,
   }
   puts(JSON.dump(result_hash))
