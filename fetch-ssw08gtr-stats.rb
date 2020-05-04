@@ -21,7 +21,7 @@ COUNTER_INDEXES = [
 def generate_port_statistics(counters)
   result = {}
   COUNTER_INDEXES.each do |metric_def|
-    result[metric_def[:name]] = counters[metric_def[:index]]
+    result[metric_def[:name]] = counters[metric_def[:index]].to_i
   end
   return result
 end
